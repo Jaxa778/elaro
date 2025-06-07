@@ -1,46 +1,34 @@
-import 'dart:convert';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class LinksModel {
-  final String first;
-  final String last;
-  final dynamic prev;
-  final dynamic next;
+part 'links_model.freezed.dart';
+part 'links_model.g.dart';
 
-  LinksModel({
-    required this.first,
-    required this.last,
-    required this.prev,
-    required this.next,
-  });
 
-  LinksModel copyWith({
-    String? first,
-    String? last,
-    dynamic prev,
-    dynamic next,
-  }) => LinksModel(
-    first: first ?? this.first,
-    last: last ?? this.last,
-    prev: prev ?? this.prev,
-    next: next ?? this.next,
-  );
+@freezed
+class LinksModel with _$LinksModel {
+  const factory LinksModel({
+    required String first,
+    required String last,
+    required dynamic prev,
+    required dynamic next,
+  }) = _LinksModel;
 
-  factory LinksModel.fromJson(String str) =>
-      LinksModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory LinksModel.fromMap(Map<String, dynamic> json) => LinksModel(
-    first: json["first"],
-    last: json["last"],
-    prev: json["prev"],
-    next: json["next"],
-  );
-
-  Map<String, dynamic> toMap() => {
-    "first": first,
-    "last": last,
-    "prev": prev,
-    "next": next,
-  };
+  factory LinksModel.fromJson(Map<String, Object?> json) => _$LinksModelFromJson(json);
+  
+  @override
+  String get first => throw UnimplementedError();
+  
+  @override
+  String get last => throw UnimplementedError();
+  
+  @override
+  get next => throw UnimplementedError();
+  
+  @override
+  get prev => throw UnimplementedError();
+  
+  @override
+  Map<String, dynamic> toJson() {
+    throw UnimplementedError();
+  }
 }

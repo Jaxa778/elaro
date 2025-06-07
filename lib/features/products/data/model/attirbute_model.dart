@@ -1,63 +1,45 @@
-import 'dart:convert';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class AttributeModel {
-  final int id;
-  final String nameUz;
-  final String nameCrl;
-  final String nameRu;
-  final String valueUz;
-  final String valueCrl;
-  final String valueRu;
+part 'attirbute_model.freezed.dart';
+part 'attirbute_model.g.dart';
 
-  AttributeModel({
-    required this.id,
-    required this.nameUz,
-    required this.nameCrl,
-    required this.nameRu,
-    required this.valueUz,
-    required this.valueCrl,
-    required this.valueRu,
-  });
+@freezed
+class AttirbuteModel with _$AttirbuteModel {
+  const factory AttirbuteModel({
+    required int id,
+    required String nameUz,
+    required String nameCrl,
+    required String nameRu,
+    required String valueUz,
+    required String valueCrl,
+    required String valueRu,
+  }) = _AttirbuteModel;
 
-  AttributeModel copyWith({
-    int? id,
-    String? nameUz,
-    String? nameCrl,
-    String? nameRu,
-    String? valueUz,
-    String? valueCrl,
-    String? valueRu,
-  }) => AttributeModel(
-    id: id ?? this.id,
-    nameUz: nameUz ?? this.nameUz,
-    nameCrl: nameCrl ?? this.nameCrl,
-    nameRu: nameRu ?? this.nameRu,
-    valueUz: valueUz ?? this.valueUz,
-    valueCrl: valueCrl ?? this.valueCrl,
-    valueRu: valueRu ?? this.valueRu,
-  );
+  factory AttirbuteModel.fromJson(Map<String, Object?> json) =>
+      _$AttirbuteModelFromJson(json);
+      @override
+        int get id => throw UnimplementedError();
 
-  factory AttributeModel.fromJson(String str) => AttributeModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory AttributeModel.fromMap(Map<String, dynamic> json) => AttributeModel(
-    id: json["id"],
-    nameUz: json["name_uz"],
-    nameCrl: json["name_crl"],
-    nameRu: json["name_ru"],
-    valueUz: json["value_uz"],
-    valueCrl: json["value_crl"],
-    valueRu: json["value_ru"],
-  );
-
-  Map<String, dynamic> toMap() => {
-    "id": id,
-    "name_uz": nameUz,
-    "name_crl": nameCrl,
-    "name_ru": nameRu,
-    "value_uz": valueUz,
-    "value_crl": valueCrl,
-    "value_ru": valueRu,
-  };
+        @override
+        String get nameCrl => throw UnimplementedError();
+      
+        @override
+        String get nameRu => throw UnimplementedError();
+      
+        @override
+        String get nameUz => throw UnimplementedError();
+      
+        @override
+        Map<String, dynamic> toJson() {
+          throw UnimplementedError();
+        }
+      
+        @override
+        String get valueCrl => throw UnimplementedError();
+      
+        @override
+        String get valueRu => throw UnimplementedError();
+      
+        @override
+        String get valueUz => throw UnimplementedError();
 }

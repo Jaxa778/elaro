@@ -1,71 +1,51 @@
-import 'dart:convert';
-
 import 'package:elaro/features/products/data/model/link_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class MetaModel {
-  final int currentPage;
-  final int from;
-  final int lastPage;
-  final List<LinkModel> links;
-  final String path;
-  final int perPage;
-  final int to;
-  final int total;
+part 'meta_model.freezed.dart';
+part 'meta_model.g.dart';
 
-  MetaModel({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.links,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
-  });
 
-  MetaModel copyWith({
-    int? currentPage,
-    int? from,
-    int? lastPage,
-    List<LinkModel>? links,
-    String? path,
-    int? perPage,
-    int? to,
-    int? total,
-  }) => MetaModel(
-    currentPage: currentPage ?? this.currentPage,
-    from: from ?? this.from,
-    lastPage: lastPage ?? this.lastPage,
-    links: links ?? this.links,
-    path: path ?? this.path,
-    perPage: perPage ?? this.perPage,
-    to: to ?? this.to,
-    total: total ?? this.total,
-  );
+@freezed
+class MetaModel with _$MetaModel {
+  const factory MetaModel({
+    required int currentPage,
+    required int from,
+    required int lastPage,
+    required List<LinkModel> links,
+    required String path,
+    required int perPage,
+    required int to,
+    required int total,
+  }) = _MetaModel;
 
-  factory MetaModel.fromJson(String str) => MetaModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory MetaModel.fromMap(Map<String, dynamic> json) => MetaModel(
-    currentPage: json["current_page"],
-    from: json["from"],
-    lastPage: json["last_page"],
-    links: List<LinkModel>.from(json["links"].map((x) => LinkModel.fromMap(x))),
-    path: json["path"],
-    perPage: json["per_page"],
-    to: json["to"],
-    total: json["total"],
-  );
-
-  Map<String, dynamic> toMap() => {
-    "current_page": currentPage,
-    "from": from,
-    "last_page": lastPage,
-    "links": List<dynamic>.from(links.map((x) => x.toMap())),
-    "path": path,
-    "per_page": perPage,
-    "to": to,
-    "total": total,
-  };
+  factory MetaModel.fromJson(Map<String, Object?> json) => _$MetaModelFromJson(json);
+  
+  @override
+  int get currentPage => throw UnimplementedError();
+  
+  @override
+  int get from => throw UnimplementedError();
+  
+  @override
+  int get lastPage => throw UnimplementedError();
+  
+  @override
+  List<LinkModel> get links => throw UnimplementedError();
+  
+  @override
+  String get path => throw UnimplementedError();
+  
+  @override
+  int get perPage => throw UnimplementedError();
+  
+  @override
+  int get to => throw UnimplementedError();
+  
+  @override
+  Map<String, dynamic> toJson() {
+    throw UnimplementedError();
+  }
+  
+  @override
+  int get total => throw UnimplementedError();
 }

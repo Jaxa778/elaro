@@ -1,28 +1,29 @@
-import 'dart:convert';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class LinkModel {
-  final String? url;
-  final String label;
-  final bool active;
+part 'link_model.freezed.dart';
+part 'link_model.g.dart';
 
-  LinkModel({required this.url, required this.label, required this.active});
+@freezed
+class LinkModel with _$LinkModel {
+  const factory LinkModel({
+    required String? url,
+    required String label,
+    required bool active,
+  }) = _LinkModel;
 
-  LinkModel copyWith({String? url, String? label, bool? active}) => LinkModel(
-    url: url ?? this.url,
-    label: label ?? this.label,
-    active: active ?? this.active,
-  );
-
-  factory LinkModel.fromJson(String str) => LinkModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory LinkModel.fromMap(Map<String, dynamic> json) =>
-      LinkModel(url: json["url"], label: json["label"], active: json["active"]);
-
-  Map<String, dynamic> toMap() => {
-    "url": url,
-    "label": label,
-    "active": active,
-  };
+  factory LinkModel.fromJson(Map<String, Object?> json) => _$LinkModelFromJson(json);
+  
+  @override
+  bool get active => throw UnimplementedError();
+  
+  @override
+  String get label => throw UnimplementedError();
+  
+  @override
+  Map<String, dynamic> toJson() {
+    throw UnimplementedError();
+  }
+  
+  @override
+  String? get url => throw UnimplementedError();
 }

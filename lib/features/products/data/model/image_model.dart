@@ -1,21 +1,22 @@
-import 'dart:convert';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class ImageModel {
-  final int id;
-  final String image;
+part 'image_model.freezed.dart';
+part 'image_model.g.dart';
 
-  ImageModel({required this.id, required this.image});
+@freezed
+class ImageModel with _$ImageModel {
+  const factory ImageModel({required int id, required String image}) = _ImageModel;
 
-  ImageModel copyWith({int? id, String? image}) =>
-      ImageModel(id: id ?? this.id, image: image ?? this.image);
-
-  factory ImageModel.fromJson(String str) =>
-      ImageModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory ImageModel.fromMap(Map<String, dynamic> json) =>
-      ImageModel(id: json["id"], image: json["image"]);
-
-  Map<String, dynamic> toMap() => {"id": id, "image": image};
+  factory ImageModel.fromJson(Map<String, Object?> json) => _$ImageModelFromJson(json);
+  
+  @override
+  int get id => throw UnimplementedError();
+  
+  @override
+  String get image => throw UnimplementedError();
+  
+  @override
+  Map<String, dynamic> toJson() {
+    throw UnimplementedError();
+  }
 }

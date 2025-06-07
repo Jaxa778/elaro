@@ -1,141 +1,95 @@
-import 'dart:convert';
-
 import 'package:elaro/features/products/data/model/attirbute_model.dart';
 import 'package:elaro/features/products/data/model/image_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class ProductModel {
-  final int id;
-  final String nameUz;
-  final String nameCrl;
-  final String nameRu;
-  final String color;
-  final String price;
-  final int qty;
-  final int discountedPrice;
-  final String discount;
-  final String? discountType;
-  final String? discountStart;
-  final String? discountEnd;
-  final String descriptionUz;
-  final String descriptionCrl;
-  final String descriptionRu;
-  final int categoryId;
-  final int brandId;
-  final List<ImageModel> images;
-  final List<AttributeModel> attributes;
+part 'product_model.freezed.dart';
+part 'product_model.g.dart';
 
-  ProductModel({
-    required this.id,
-    required this.nameUz,
-    required this.nameCrl,
-    required this.nameRu,
-    required this.color,
-    required this.price,
-    required this.qty,
-    required this.discountedPrice,
-    required this.discount,
-    required this.discountType,
-    required this.discountStart,
-    required this.discountEnd,
-    required this.descriptionUz,
-    required this.descriptionCrl,
-    required this.descriptionRu,
-    required this.categoryId,
-    required this.brandId,
-    required this.images,
-    required this.attributes,
-  });
+@freezed
+class ProductModel with _$ProductModel {
+  const factory ProductModel({
+    required int id,
+    required String nameUz,
+    required String nameCrl,
+    required String nameRu,
+    required String color,
+    required String price,
+    required int qty,
+    required int discountedPrice,
+    required String discount,
+    required String? discountType,
+    required String? discountStart,
+    required String? discountEnd,
+    required String descriptionUz,
+    required String descriptionCrl,
+    required String descriptionRu,
+    required int categoryId,
+    required int brandId,
+    required List<ImageModel> images,
+    required List<AttirbuteModel> attributes,
+  }) = _ProductModel;
 
-  ProductModel copyWith({
-    int? id,
-    String? nameUz,
-    String? nameCrl,
-    String? nameRu,
-    String? color,
-    String? price,
-    int? qty,
-    int? discountedPrice,
-    String? discount,
-    String? discountType,
-    String? discountStart,
-    String? discountEnd,
-    String? descriptionUz,
-    String? descriptionCrl,
-    String? descriptionRu,
-    int? categoryId,
-    int? brandId,
-    List<ImageModel>? images,
-    List<AttributeModel>? attributes,
-  }) => ProductModel(
-    id: id ?? this.id,
-    nameUz: nameUz ?? this.nameUz,
-    nameCrl: nameCrl ?? this.nameCrl,
-    nameRu: nameRu ?? this.nameRu,
-    color: color ?? this.color,
-    price: price ?? this.price,
-    qty: qty ?? this.qty,
-    discountedPrice: discountedPrice ?? this.discountedPrice,
-    discount: discount ?? this.discount,
-    discountType: discountType ?? this.discountType,
-    discountStart: discountStart ?? this.discountStart,
-    discountEnd: discountEnd ?? this.discountEnd,
-    descriptionUz: descriptionUz ?? this.descriptionUz,
-    descriptionCrl: descriptionCrl ?? this.descriptionCrl,
-    descriptionRu: descriptionRu ?? this.descriptionRu,
-    categoryId: categoryId ?? this.categoryId,
-    brandId: brandId ?? this.brandId,
-    images: images ?? this.images,
-    attributes: attributes ?? this.attributes,
-  );
-
-  factory ProductModel.fromJson(String str) =>
-      ProductModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductModel.fromMap(Map<String, dynamic> json) => ProductModel(
-    id: json["id"],
-    nameUz: json["name_uz"],
-    nameCrl: json["name_crl"],
-    nameRu: json["name_ru"],
-    color: json["color"],
-    price: json["price"],
-    qty: json["qty"],
-    discountedPrice: json["discounted_price"],
-    discount: json["discount"],
-    discountType: json["discount_type"],
-    discountStart: json["discount_start"],
-    discountEnd: json["discount_end"],
-    descriptionUz: json["description_uz"],
-    descriptionCrl: json["description_crl"],
-    descriptionRu: json["description_ru"],
-    categoryId: json["category_id"],
-    brandId: json["brand_id"],
-    images: List<ImageModel>.from(json["images"].map((x) => ImageModel.fromMap(x))),
-    attributes: List<AttributeModel>.from(
-      json["attributes"].map((x) => AttributeModel.fromMap(x)),
-    ),
-  );
-
-  Map<String, dynamic> toMap() => {
-    "id": id,
-    "name_uz": nameUz,
-    "name_crl": nameCrl,
-    "name_ru": nameRu,
-    "color": color,
-    "price": price,
-    "qty": qty,
-    "discounted_price": discountedPrice,
-    "discount": discount,
-    "discount_type": discountType,
-    "discount_start": discountStart,
-    "discount_end": discountEnd,
-    "description_uz": descriptionUz,
-    "description_crl": descriptionCrl,
-    "description_ru": descriptionRu,
-    "category_id": categoryId,
-    "brand_id": brandId,
-    "images": List<dynamic>.from(images.map((x) => x.toMap())),
-    "attributes": List<dynamic>.from(attributes.map((x) => x.toMap())),
-  };
+  factory ProductModel.fromJson(Map<String, Object?> json) => _$ProductModelFromJson(json);
+  
+  @override
+  List<AttirbuteModel> get attributes => throw UnimplementedError();
+  
+  @override
+  int get brandId => throw UnimplementedError();
+  
+  @override
+  int get categoryId => throw UnimplementedError();
+  
+  @override
+  String get color => throw UnimplementedError();
+  
+  @override
+  String get descriptionCrl => throw UnimplementedError();
+  
+  @override
+  String get descriptionRu => throw UnimplementedError();
+  
+  @override
+  String get descriptionUz => throw UnimplementedError();
+  
+  @override
+  String get discount => throw UnimplementedError();
+  
+  @override
+  String? get discountEnd => throw UnimplementedError();
+  
+  @override
+  String? get discountStart => throw UnimplementedError();
+  
+  @override
+  String? get discountType => throw UnimplementedError();
+  
+  @override
+  int get discountedPrice => throw UnimplementedError();
+  
+  @override
+  int get id => throw UnimplementedError();
+  
+  @override
+  List<ImageModel> get images => throw UnimplementedError();
+  
+  @override
+  String get nameCrl => throw UnimplementedError();
+  
+  @override
+  String get nameRu => throw UnimplementedError();
+  
+  @override
+  String get nameUz => throw UnimplementedError();
+  
+  @override
+  String get price => throw UnimplementedError();
+  
+  @override
+  int get qty => throw UnimplementedError();
+  
+  @override
+  Map<String, dynamic> toJson() {
+    throw UnimplementedError();
+  }
 }
